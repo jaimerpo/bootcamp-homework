@@ -22,9 +22,7 @@ const rectanglePerimeter = function(length: number, height: number): number {
 }
 
 // Arrow function
-const cubeVolume = (sideLength: number): number => {
-    return sideLength ** 3;
-}
+const cubeVolume = (sideLength: number): number => sideLength ** 3;
 
 // Printing:
 const circleRadius: number = 100;

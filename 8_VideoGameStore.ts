@@ -31,18 +31,14 @@ class VideoGame {
         VideoGame.availableGames.push(this.title);
     }
 
-    isAvailable(): boolean {
-        return this.availableCopies > 0 ? true : false;
+    isAvailable(numberOfCopiesParameter: number): boolean {
+        return this.availableCopies >= numberOfCopiesParameter ? true : false;
     }
 
     sell(numberOfCopiesParameter?: number): number {
 
         let transactionValue: number = 0;
         let numberOfCopies: number;
-
-        if (!this.isAvailable()){
-            throw new Error(`${this.title} is not available.`);
-        } 
 
         if (numberOfCopiesParameter !== undefined) {
             if (numberOfCopiesParameter <=0 ){
@@ -53,12 +49,17 @@ class VideoGame {
             numberOfCopies = 1; 
         }
 
+        if (!this.isAvailable(numberOfCopies)){
+            throw new Error(`${this.title} is not available for ${numberOfCopies} copies.`);
+        } 
+
         this.availableCopies -= numberOfCopies;
         this.copiesSold += numberOfCopies;
         transactionValue = this.price * numberOfCopies;
         VideoGame.totalSold += transactionValue;    
         
-        if (!this.isAvailable()){
+        const minimunStock: number = 1;
+        if (!this.isAvailable(minimunStock)){
             VideoGame.soldOutGames.push(this.title);
             
             const index = VideoGame.availableGames.indexOf(this.title);

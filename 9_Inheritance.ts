@@ -46,15 +46,17 @@ dogInstance.makeSound();
 console.log(`The cat's name is ${catInstance.getName()}`);
 catInstance.makeSound();
 
+/*
+The following code was commented due to trying to access a private property (age) is not generating an error in execution time.
+The error appears compiling the typescript file.
 
-// The following code was commented due to trying to access a private property (age) is not generating an error in execution time.
-// The error appears compiling the typescript file.
-// try {
-//      console.log(`The dog is ${dogInstance.age} years old`);
-//      console.log(`The cat is ${catInstance.age} years old`);
-// } catch (error) {
-//      console.log(error.message);
-// }
+try {
+    console.log(`The dog is ${dogInstance.age} years old`);
+    console.log(`The cat is ${catInstance.age} years old`);
+} catch (error) {
+    console.log(error.message);
+}
+*/
 
 console.log(`Using the getAge method, the dog is ${dogInstance.getAge()} years old`);
 console.log(`Using the getAge method, the cat is ${catInstance.getAge()} years old`);
